@@ -3,7 +3,7 @@ const expect = require('chai').expect;
 
 describe('testing-configuration-logging/unit-tests', () => {
   describe('Validator', () => {
-    it.only('валидатор проверяет строковые поля длиной меньше 10', () => {
+    it('валидатор проверяет строковые поля длиной меньше 10', () => {
       const validator = new Validator({
         name: {
           type: 'string',
@@ -19,7 +19,7 @@ describe('testing-configuration-logging/unit-tests', () => {
       expect(errors[0]).to.have.property('error').and.to.be.equal('too short, expect 10, got 6');
     });
 
-    it.only('валидатор проверяет строковые поля длиной больше 20', () => {
+    it('валидатор проверяет строковые поля длиной больше 20', () => {
       const validator = new Validator({
         name: {
           type: 'string',
@@ -35,7 +35,7 @@ describe('testing-configuration-logging/unit-tests', () => {
       expect(errors[0]).to.have.property('error').and.to.be.equal('too long, expect 20, got 36');
     });
 
-    it.only('валидатор проверяет числовые поля меньше 10', () => {
+    it('валидатор проверяет числовые поля меньше 10', () => {
       const validator = new Validator({
         age: {
           type: 'number',
@@ -51,7 +51,7 @@ describe('testing-configuration-logging/unit-tests', () => {
       expect(errors[0]).to.have.property('error').and.to.be.equal(`too little, expect 10, got 5`);
     });
 
-    it.only('валидатор проверяет числовые поля больше 20', () => {
+    it('валидатор проверяет числовые поля больше 20', () => {
       const validator = new Validator({
         age: {
           type: 'number',
@@ -67,7 +67,7 @@ describe('testing-configuration-logging/unit-tests', () => {
       expect(errors[0]).to.have.property('error').and.to.be.equal(`too big, expect 20, got 25`);
     });
 
-    it.only(
+    it(
         'валидатор возвращает пустой массив ошибок, если получает пустой объект на входе',
         () => {
           const validator = new Validator({});
@@ -77,7 +77,7 @@ describe('testing-configuration-logging/unit-tests', () => {
           expect(errors).to.have.length(0);
         });
 
-    it.only('валидатор возвращает пустой массив ошибок, если не получает объект на входе', () => {
+    it('валидатор возвращает пустой массив ошибок, если не получает объект на входе', () => {
       const validator = new Validator();
 
       const errors = validator.validate();
@@ -85,7 +85,7 @@ describe('testing-configuration-logging/unit-tests', () => {
       expect(errors).to.have.length(0);
     });
 
-    it.only(
+    it(
         'валидатор возвращает одну ошибку, если объект условий состоит из одного поля undefined',
         () => {
           const validator = new Validator({
@@ -99,7 +99,7 @@ describe('testing-configuration-logging/unit-tests', () => {
               .to.have.property('error').and.to.be.equal('expect rule not to be undefined');
         });
 
-    it.only(
+    it(
         'валидатор возвращает одну ошибку, если объект валидации состоит из одного поля undefined',
         () => {
           const validator = new Validator({
@@ -117,7 +117,7 @@ describe('testing-configuration-logging/unit-tests', () => {
               .to.have.property('error').and.to.be.equal('expect number, got undefined');
         });
 
-    it.only('валидатор проверяет правило на число, если валидируется строка', () => {
+    it('валидатор проверяет правило на число, если валидируется строка', () => {
       const validator = new Validator({
         age: {
           type: 'number',
@@ -133,7 +133,7 @@ describe('testing-configuration-logging/unit-tests', () => {
       expect(errors[0]).to.have.property('error').and.to.be.equal(`expect number, got string`);
     });
 
-    it.only('валидатор проверяет правило на строку, если валидируется число', () => {
+    it('валидатор проверяет правило на строку, если валидируется число', () => {
       const validator = new Validator({
         name: {
           type: 'string',
